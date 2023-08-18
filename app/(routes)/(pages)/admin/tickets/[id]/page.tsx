@@ -28,7 +28,7 @@ const DataSummary = ({
   ticket: ITicket;
 }) => {
   return (
-    <div className="w-1/2 px-12 py-8">
+    <div className="lg:w-1/2 w-full px-12 py-8">
       <h3 className="mb-2">{title}</h3>
       <div className="flex mb-6">
         <span className="text-sm">
@@ -108,7 +108,7 @@ const Ticket = () => {
 
   if (!ticket) return <div>Loading..</div>;
   return (
-    <div className="flex justify-center items-start w-full">
+    <div className="flex lg:justify-center lg:flex-row flex-col items-start w-full">
       <DataSummary
         title={`Ticket ID: ${id}`}
         dateField="createdAt"
@@ -123,7 +123,7 @@ const Ticket = () => {
           ticket={ticket}
         />
       ) : (
-        <Container className="w-1/2 px-12 py-8">
+        <Container className="lg:w-1/2 w-full px-12 py-8">
           <form onSubmit={handleTicketResolve}>
             <h3 className="mb-4">Resolution</h3>
             <div className="my-4">

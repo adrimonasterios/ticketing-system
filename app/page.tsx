@@ -20,7 +20,7 @@ type Stat = {
 
 const Box = ({ icon, text, button }: BoxType) => {
   return (
-    <Container className="w-5/12 h-full flex flex-col items-center ">
+    <Container className="lg:w-5/12 lg:m-0 mb-4 w-full h-full flex flex-col items-center ">
       <div className="rounded-full bg-background-400 flex justify-center items-center p-4">
         <HeroIcon icon={icon} className="w-12 h-12 text-primary-400" />
       </div>
@@ -49,7 +49,7 @@ const Home = () => {
   return (
     <main className="flex flex-col items-center">
       <Stats tickets={tickets} />
-      <div className="flex justify-around w-3/5 mt-12">
+      <div className="lg:flex lg:justify-around lg:flex-row lg:w-3/5 mt-12 flex-col justify-start">
         {[
           {
             icon: "QuestionMarkCircleIcon",

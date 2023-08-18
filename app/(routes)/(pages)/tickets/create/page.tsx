@@ -55,8 +55,8 @@ const TicketCreation = () => {
   };
 
   return (
-    <div className="flex justify-center items-start">
-      <div className="w-1/3 px-12 py-8">
+    <div className="flex lg:justify-center lg:flex-row flex-col items-start">
+      <div className="lg:w-1/3 w-full px-12 py-8">
         <h3 className="mb-4">Create Ticket</h3>
         <p>
           Please fill out the Ticket form by adding your name, email and a
@@ -76,7 +76,7 @@ const TicketCreation = () => {
           your ticket.
         </p>
       </div>
-      <Container className="w-1/2 px-12 py-8">
+      <Container className="lg:w-1/2 w-full px-12 py-8">
         <form onSubmit={handleTicketCreate}>
           <h3 className="mb-4">New Ticket</h3>
           <Input
