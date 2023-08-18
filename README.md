@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This application is a simulation of a ticketing system. A user can create tickets and the admin staff can see the list of all the tickets and respond to them or change their status. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). 
+
+## Packages Used
+- TailwindCSS
+- Moment
+- MongoDB
+- Mongoose
 
 ## Getting Started
 
