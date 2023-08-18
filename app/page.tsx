@@ -4,11 +4,18 @@ import Button, { ButtonProps } from "@@/common/Button";
 import Container from "@@/common/Container";
 import HeroIcon from "@@/common/HeroIcon";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ITicket } from "./(routes)/api/_models/ticket";
 
 type BoxType = {
   icon: string;
   text: string;
   button: ButtonProps;
+};
+
+type Stat = {
+  name: string;
+  value: number;
 };
 
 const Box = ({ icon, text, button }: BoxType) => {
@@ -25,28 +32,40 @@ const Box = ({ icon, text, button }: BoxType) => {
 
 const Home = () => {
   const router = useRouter();
-  const stats = [
-    {
-      name: "Your Tickets",
-      value: "6",
-    },
-    {
-      name: "Open Tickets",
-      value: "4",
-    },
-    {
-      name: "Resolved Tickets",
-      value: "2",
-    },
-  ];
+  const [stats, setStats] = useState<Stat[]>([
+    { name: "Your Tickets", value: 0 },
+    { name: "Open Tickets", value: 0 },
+    { name: "Resolved Tickets", value: 0 },
+  ]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("/api/tickets");
+      const res = await response.json();
+      const newStats = res.reduce((acc: Stat[], t: ITicket) => {
+        acc[0].value++;
+        if (t.status === "resolved") {
+          acc[2].value++;
+        } else {
+          acc[1].value++;
+        }
+        console.log(acc);
+        return acc;
+      }, stats);
+      setStats(newStats);
+      console.log({ res });
+    })();
+  }, []);
 
   const handleCreateTicket = () => {
-    router.push("/tickets/ticket/create");
+    router.push("/tickets/create");
   };
-
+  console.log({ stats });
   return (
     <main className="flex flex-col items-center">
-      <Stats stats={stats} />
+      <Stats
+        stats={stats.map((s: Stat) => ({ ...s, value: String(s.value) }))}
+      />
       <div className="flex justify-around w-3/5 mt-12">
         {[
           {
