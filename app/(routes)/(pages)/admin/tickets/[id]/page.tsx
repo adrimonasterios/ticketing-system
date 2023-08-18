@@ -99,11 +99,12 @@ const Ticket = () => {
       method: "PUT",
       body: JSON.stringify({ ...form, status: form.status.toLowerCase() }),
     });
-    if (form.status === "resolved")
-      console.log(
-        "Would normally send email here to the user with body: Dear {ClientName}, The ticket you submitted on {CreatedDate} is now {Status}. Details about your ticket: {TicketResponse}. Thank you for your patience, Best Regards, Zealthy Team "
-      );
-    router.push("/admin");
+    console.log(
+      "Would normally send email here to the user with body: Dear {ClientName}, The ticket you submitted on {CreatedDate} is now {Status}. Details about your ticket: {TicketResponse}. Thank you for your patience, Best Regards, Zealthy Team "
+    );
+    setTimeout(() => {
+      router.push("/admin");
+    }, 1000);
   };
 
   if (!ticket) return <div>Loading..</div>;
