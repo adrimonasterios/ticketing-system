@@ -33,3 +33,18 @@ export const titleCase = (str: string) => {
     .map((item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
     .join(" ");
 };
+
+/** Sorts strings alphabetically
+ * @example ```js
+ *   someArray.sort((a, b) => sortByString(a, b,  'desc'))
+ * ```
+ */
+export const sortByString = (
+  a: string,
+  b: string,
+  order: "asc" | "desc" = "asc"
+) => {
+  const firstValue = order === "asc" ? a : b;
+  const secondValue = order === "asc" ? b : a;
+  return firstValue.localeCompare(secondValue);
+};

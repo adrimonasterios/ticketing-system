@@ -1,15 +1,15 @@
+"use client";
+import { ITicket } from "@/(routes)/api/_models/ticket";
 import { classNames } from "@/_utils/helpers";
+import { useEffect, useState } from "react";
 
 export type Stat = {
-  name: string; // Outstanding invoices
-  value: string; // $245,988.00
-  previousStat?: string;
-  change?: string; //+10.18%
-  changeType?: "positive" | "negative";
+  name: string;
+  value: number;
 };
 
 type Props = {
-  stats: Stat[];
+  tickets: ITicket[];
 };
 
 const statsBox = {
@@ -18,7 +18,28 @@ const statsBox = {
   last: "rounded-r-lg",
 };
 
-const Stats = ({ stats }: Props) => {
+const Stats = ({ tickets }: Props) => {
+  const [stats, setStats] = useState<Stat[]>([
+    { name: "Your Tickets", value: 0 },
+    { name: "Open Tickets", value: 0 },
+    { name: "Resolved Tickets", value: 0 },
+  ]);
+
+  useEffect(() => {
+    (async () => {
+      const newStats = tickets.reduce((acc: Stat[], t: ITicket) => {
+        acc[0].value++;
+        if (t.status === "resolved") {
+          acc[2].value++;
+        } else {
+          acc[1].value++;
+        }
+        return acc;
+      }, stats.slice());
+      setStats(newStats);
+    })();
+  }, [tickets.length]);
+
   return (
     <dl className="rounded-lg ring-1 ring-slate-900/10 mx-auto grid grid-cols-1 gap-px bg-text-400/5 sm:grid-cols-2 lg:grid-cols-3">
       {stats.map((stat, index) => {
@@ -39,24 +60,8 @@ const Stats = ({ stats }: Props) => {
             <dt className="text-sm font-medium leading-6 text-gray-500">
               {stat.name}
             </dt>
-
-            <dd
-              className={classNames(
-                stat.changeType === "negative"
-                  ? "text-rose-600"
-                  : "text-gray-700",
-                "text-xs font-medium"
-              )}
-            >
-              {stat.change}
-            </dd>
             <dd className="w-full flex-none text-3xl font-bold leading-10 tracking-tight text-text-400">
               {stat.value}
-              {!!stat.previousStat && (
-                <span className="ml-2 text-sm font-medium text-gray-500">
-                  from {stat.previousStat}
-                </span>
-              )}
             </dd>
           </div>
         );

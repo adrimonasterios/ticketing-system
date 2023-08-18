@@ -12,6 +12,9 @@ module.exports = {
         primary: {
           400: "#00531b",
         },
+        secondary: {
+          400: "#fff6e9",
+        },
         background: {
           400: "#f2f4e9",
         },
@@ -25,18 +28,6 @@ module.exports = {
     require("@tailwindcss/forms"),
     plugin(function ({ addBase, theme }) {
       addBase({
-        // h1: {
-        //   fontSize: theme("fontSize.3xl"),
-        //   fontFamily: theme("fontFamily.display"),
-        //   fontWeight: theme("fontWeight.semibold"),
-        //   color: theme("colors.zk-secondary.400"),
-        // },
-        // h2: {
-        //   fontSize: theme("fontSize.2xl"),
-        //   fontFamily: theme("fontFamily.display"),
-        //   fontWeight: theme("fontWeight.semibold"),
-        //   color: theme("colors.zk-secondary.400"),
-        // },
         h3: {
           fontSize: theme("fontSize.lg"),
           fontFamily: theme("fontFamily.sans"),

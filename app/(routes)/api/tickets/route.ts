@@ -3,9 +3,13 @@ import { NextResponse } from "next/server";
 import ticket from "../_models/ticket";
 
 export const GET = dbConnect(async function () {
-  const tickets = await ticket.find({});
+  try {
+    const tickets = await ticket.find({});
 
-  return NextResponse.json(tickets);
+    return NextResponse.json(tickets);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export const POST = dbConnect(async function (request: Request) {

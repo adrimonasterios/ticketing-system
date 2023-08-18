@@ -6,7 +6,7 @@ import React, {
   forwardRef,
 } from "react";
 import { classNames } from "@/_utils/helpers";
-import HeroIcon from "./HeroIcon";
+import HeroIcon from "@@/common/HeroIcon";
 
 type Props = Partial<InputHTMLAttributes<HTMLInputElement>> & {
   label?: string;

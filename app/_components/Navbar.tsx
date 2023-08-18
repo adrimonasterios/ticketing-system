@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Admin", href: "/tickets" },
+  { name: "Admin", href: "/admin" },
 ];
 
 const Navbar = ({ children }: PropsWithChildren) => {
@@ -117,8 +117,8 @@ const Navbar = ({ children }: PropsWithChildren) => {
           </>
         )}
       </Disclosure>
-      <div className="p-12">
-        <div className="max-w-7xl w-full">{children}</div>
+      <div className="p-12 flex justify-center">
+        <div className="max-w-5xl w-full">{children}</div>
       </div>
     </>
   );

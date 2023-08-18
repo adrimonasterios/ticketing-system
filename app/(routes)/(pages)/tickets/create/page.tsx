@@ -3,8 +3,8 @@
 import { validateEmail } from "@/_utils/helpers";
 import Button from "@@/common/Button";
 import Container from "@@/common/Container";
-import Input from "@@/common/Input";
-import TextArea from "@@/common/TextArea";
+import Input from "@@/common/Form/Input";
+import TextArea from "@@/common/Form/TextArea";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 

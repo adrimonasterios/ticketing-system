@@ -1,5 +1,5 @@
 import { TextareaHTMLAttributes } from "react";
-import HeroIcon from "./HeroIcon";
+import HeroIcon from "@@/common/HeroIcon";
 import { classNames } from "@/_utils/helpers";
 
 type Props = Partial<TextareaHTMLAttributes<HTMLTextAreaElement>> & {
